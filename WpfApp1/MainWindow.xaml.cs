@@ -245,5 +245,10 @@ namespace Lab_1
         {
 
         }
+
+        private void listBoxL_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

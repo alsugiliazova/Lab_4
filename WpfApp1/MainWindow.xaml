@@ -57,7 +57,7 @@
                 <MenuItem Header="Add VMAccuracy" Click="MenuItem_Click"/>
             </MenuItem>
         </Menu>
-        <ListBox x:Name="listBoxL" Margin="0,29,0,2" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Data.Benchmark.Collection_time, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, UpdateSourceTrigger=PropertyChanged}">
+        <ListBox x:Name="listBoxL" Margin="0,29,5,2" Grid.Row="1" ItemsSource="{Binding Data.Benchmark.Collection_time, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="listBoxL_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -85,17 +85,17 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <TextBlock x:Name="AdditionalInfoL" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" Text="{Binding SelectedItem, Converter={StaticResource VMTimeConv}, ElementName=listBoxL}" TextWrapping="Wrap" VerticalAlignment="Center" RenderTransformOrigin="0,0" Height="34" Width="265" TextAlignment="Center"/>
+        <TextBlock x:Name="AdditionalInfoL" HorizontalAlignment="Left" Grid.Row="2" Text="{Binding SelectedItem, Converter={StaticResource VMTimeConv}, ElementName=listBoxL}" TextWrapping="Wrap" VerticalAlignment="Center" RenderTransformOrigin="0,0" Height="34" Width="265" TextAlignment="Center"/>
         <TextBlock x:Name="AdditionalInfoR" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="2" Text="{Binding SelectedItem, Converter={StaticResource VMAccuracyConv}, ElementName=listBoxR}" TextWrapping="Wrap" VerticalAlignment="Center" RenderTransformOrigin="0,0" Height="34" Width="265" TextAlignment="Center"/>
         <TextBlock x:Name="SaveStatus" HorizontalAlignment="Center" Grid.Row="3" Text="{Binding Data.VMBenchmarkChanged, Converter={StaticResource BenchmarckChangedConv}, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, UpdateSourceTrigger=PropertyChanged}" Foreground="Red" TextWrapping="Wrap" VerticalAlignment="Center" Height="34" Width="270" TextAlignment="Center"/>
         <TextBlock x:Name="Max_VML_HA_CoefOut" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="3" Text="{Binding Data.Benchmark.Max_VML_HA_Coef, Converter={StaticResource Max_VML_HA_CoefConv}, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Center" Height="34" Width="264" TextAlignment="Center"/>
-        <Grid Grid.Row="1">
+        <Grid Grid.ColumnSpan="2" Margin="265,5,0,29" Grid.RowSpan="2" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="81*"/>
                 <RowDefinition Height="62*"/>
                 <RowDefinition Height="203*"/>
             </Grid.RowDefinitions>
-            <ComboBox x:Name="Func" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Height="22" IsSynchronizedWithCurrentItem="True" SelectedIndex="{Binding inGrid.CurFunction, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}">
+            <ComboBox x:Name="Func" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Height="22" IsSynchronizedWithCurrentItem="True" SelectedIndex="{Binding inGrid.CurFunction, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}" Margin="0,81,0,0" Grid.RowSpan="2">
                 <ComboBoxItem Content="vmdTan"/>
                 <ComboBoxItem Content="vmdErfInv"/>
             </ComboBox>
@@ -112,8 +112,7 @@
                 Пример ввода:<LineBreak/> Целое число ПРОБЕЛ <LineBreak/> Вещественное число ПРОБЕЛ <LineBreak/>Вещественное число <LineBreak/>Например: 4 4 10
             </TextBlock>
         </Grid>
-        <Label x:Name="label1" Content="VMTime:" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Height="29" Width="181
-               " Target="{Binding ElementName=listBoxL, Mode=OneWay}"/>
+        <Label x:Name="label1" Content="VMTime:" HorizontalAlignment="Center" VerticalAlignment="Top" Height="29" Width="182" Target="{Binding ElementName=listBoxL, Mode=OneWay}" Margin="0,18,0,0" Grid.RowSpan="2"/>
         <Label x:Name="label2" Content="VMAccuracy:" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Height="29" Width="181" Target="{Binding ElementName=listBoxR, Mode=OneWay}"/>
         <TextBlock x:Name="Min_VML_HA_CoefOut" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="3" Text="{Binding Data.Benchmark.Min_VML_HA_Coef, Converter={StaticResource Min_VML_HA_CoefConv}, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}" TextWrapping="Wrap" VerticalAlignment="Center" Height="34" Width="265" TextAlignment="Center"/>
     </Grid>
